@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shopping</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+  
+</head>
+<body>
+<div class="header">
+        <ul class="nav nav-pills pull-left">
+          <li class="active"><a href="/">Home</a></li>
+        </ul>
+
+        <div class="pull-right">
+          <% if current_user %>
+            <strong><%= current_user.name %></strong>
+            <%= link_to " (Salir) ", signout_path, id: "sign_out" %>
+          <% else %>
+            <%= link_to "Iniciar Sesión con Facebook", "/auth/facebook", id: "sign_in" %>
+          <% end %>
+        </div>
+  <div class="jumbotron">
+  <h2>"Bases de Datos II e Inteligencia de Negocios"</h2>
+
+</div>
+
+</div>
+<div class='container'>
+<div class='row'>
+<div class='col-md-2'> 
+<%= render 'layouts/sidebar' %>
+</div>
+<div class='col-md-10'> 
+<%= yield %> 
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
