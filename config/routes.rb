@@ -8,7 +8,7 @@ Shopping::Application.routes.draw do
   resources :customers
   resources :items
   resources :orders
-  resources :order_detail
+  resources :order_details
   resources :users  
   
   

@@ -15,10 +15,15 @@ class CustomersController < ApplicationController
   # GET /customers/new
   def new
     @customer = Customer.new
+      @id = Customer.maximum('customer_id') +1
   end
 
   # GET /customers/1/edit
   def edit
+    @id = Customer.find_by_customer_id(params[:id]).customer_id
+    if @id.nil?
+      @id = Customer.maximum('customer_id') +1
+    end
   end
 
   # POST /customers

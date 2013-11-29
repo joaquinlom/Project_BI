@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action  only: [:show, :edit, :update, :destroy]
 
   # GET /orders
   # GET /orders.json
@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @order_details = OrderDetail.where(:order_id => params[:id])
   end
 
   # GET /orders/new
@@ -56,7 +57,7 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
     respond_to do |format|
-      format.html { redirect_to orders_url }
+      format.html { redirect_to orders_url ,notice: 'Orden Eliminado' }
       format.json { head :no_content }
     end
   end

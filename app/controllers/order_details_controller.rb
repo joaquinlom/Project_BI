@@ -1,5 +1,5 @@
 class OrderDetailsController < ApplicationController
-  before_action :set_order_detail, only: [:show, :edit, :update, :destroy]
+  before_action  only: [:show, :edit, :update, :destroy]
 
   # GET /order_details
   # GET /order_details.json
@@ -54,9 +54,10 @@ class OrderDetailsController < ApplicationController
   # DELETE /order_details/1
   # DELETE /order_details/1.json
   def destroy
+    id = @order_details.order_id
     @order_detail.destroy
     respond_to do |format|
-      format.html { redirect_to order_details_url }
+      format.html { redirect_to  orders_url(id) ,notice: 'Item Eliminado' }
       format.json { head :no_content }
     end
   end

@@ -12,6 +12,54 @@
   <% end %>
 
   <div class="actions">
+    
+  <div class='field'>
+    <%= f.label :customer_id, 'ID' %><br>
+    <%= f.text_field :customer_id ,class: 'form-control'  ,:value=>"#{@id}"%>
+  </div>
+  <div class='field'>
+    <%= f.label :first_name, 'name' %><br>
+    <%= f.text_field :first_name ,class: 'form-control'%>
+  </div>
+    
+  <div class='field'>
+    <%= f.label :last_name, 'Last name' %><br>
+    <%= f.text_field :last_name ,class: 'form-control'%>
+  </div>
+    
+  <div class='field'>
+    <%= f.label :address, 'Address' %><br>
+    <%= f.text_field :address ,class: 'form-control'%>
+  </div>
+    
+    
+  <div class='field'>
+    <%= f.label :city, 'City' %><br>
+    <%= f.text_field :city ,class: 'form-control'%>
+  </div>
+    
+    
+  <div class='field'>
+    <%= f.label :state, 'State' %><br>
+    <%= f.text_field :state ,class: 'form-control'%>
+  </div>
+    
+    
+  <div class='field'>
+    <%= f.label :zip, 'Zip' %><br>
+    <%= f.text_field :zip ,class: 'form-control'%>
+  </div>
+    
+    
+  <div class='field'>
+    <%= f.label :phone, 'Phone' %><br>
+    <%= f.text_field :phone ,class: 'form-control'%>
+  </div>
+    
+  <div class='field'>
+    <%= f.label :fax, 'Fax' %><br>
+    <%= f.text_field :fax ,class: 'form-control'%>
+  </div>
     <%= f.submit %>
   </div>
 <% end %>
