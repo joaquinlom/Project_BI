@@ -1,5 +1,9 @@
 <h1>Listing orders</h1>
 
+<%= link_to 'New Order', new_order_path %>
+<%if @orders.count <= 0%>
+<p class='text-danger'>No hay Ordenes disponibles.</p><br>
+<%else%>
 <table>
   <thead>
     <tr>
@@ -9,7 +13,6 @@
       <th width='20%'>Shipped Date</th>
     </tr>
     
-<%= link_to 'New Order', new_order_path %>
   </thead>
 
   <tbody>
@@ -24,6 +27,6 @@
     <% end %>
   </tbody>
 </table>
-
+<%end%>
 <br>
 

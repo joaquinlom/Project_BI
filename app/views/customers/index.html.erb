@@ -1,5 +1,7 @@
 <h1>Listing customers</h1>
-
+<% if @customer.count <= 0 %>
+<p class='text-danger'>No Clientes disponibles.</p><br>
+<% else %>
 <table>
   <thead>
     <tr>
@@ -19,7 +21,7 @@
     <% end %>
   </tbody>
 </table>
-
+<%end>
 <br>
 
 <%= link_to 'New Customer', new_customer_path %>
