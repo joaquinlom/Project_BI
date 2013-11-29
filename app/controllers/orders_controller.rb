@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action  only: [:show, :edit, :update, :destroy]
+  before_action  :set_order,only: [:show, :edit, :update, :destroy]
 
   # GET /orders
   # GET /orders.json
@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   def show
     @order_details = OrderDetail.where(:order_id => params[:id])
+    @order  = Order.find_by_order_id(params[:id])
   end
 
   # GET /orders/new
@@ -26,10 +27,16 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-
+   # customer = Customer.find_by_customer_id(params[:customer_id])
+   # @order = Order.new
+   # @order.customer.new(customer)
+   # @order.order_date = params[:order_date]
+   # @order.shipped_date = params[:shipped_date]
+   # @order.order_id = params[:order_id]
+   # @order.save
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        format.html { redirect_to order_url, notice: 'Order was successfully created.' }
         format.json { render action: 'show', status: :created, location: @order }
       else
         format.html { render action: 'new' }
@@ -65,11 +72,12 @@ class OrdersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
-      @order = Order.find(params[:id])
+      @order = Order.find_by_order_id(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params[:order]
+      #params[:order]
+      params.require(:order).permit(:order_id, :customer_id,:order_date,:shipped_date)
     end
 end

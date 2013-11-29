@@ -15,6 +15,7 @@ class OrderDetailsController < ApplicationController
   # GET /order_details/new
   def new
     @order_detail = OrderDetail.new
+    @id = Order.find_by_order_id(params[:id]).order_id
   end
 
   # GET /order_details/1/edit
@@ -28,7 +29,8 @@ class OrderDetailsController < ApplicationController
 
     respond_to do |format|
       if @order_detail.save
-        format.html { redirect_to @order_detail, notice: 'Order detail was successfully created.' }
+        #orders_url
+        format.html { redirect_to order_path(@order_detail.order_id), notice: 'Se agrego correctamente.' }
         format.json { render action: 'show', status: :created, location: @order_detail }
       else
         format.html { render action: 'new' }
@@ -54,10 +56,11 @@ class OrderDetailsController < ApplicationController
   # DELETE /order_details/1
   # DELETE /order_details/1.json
   def destroy
-    id = @order_details.order_id
+    @order_detail = OrderDetail.find_by_order_id(params[:id])
+    id = @order_detail.order_id
     @order_detail.destroy
     respond_to do |format|
-      format.html { redirect_to  orders_url(id) ,notice: 'Item Eliminado' }
+      format.html { redirect_to  order_path(id) ,notice: 'Item Eliminado' }
       format.json { head :no_content }
     end
   end
@@ -70,6 +73,7 @@ class OrderDetailsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_detail_params
-      params[:order_detail]
+      #params[:order_detail]
+      params.require(:order_detail).permit(:order_id, :item_id,:item_qty)
     end
 end

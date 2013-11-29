@@ -12,6 +12,27 @@
   <% end %>
 
   <div class="actions">
+    <h3> <%= @id %></h3>
+
+    
+   <div class='field'>
+      <%= f.label :order_id, 'ID' %><br>
+     <%= f.text_field :order_id , class: 'form-control' ,:value => @id ,:readonly => true  %>
+   </div>
+    
+   <div class='field'>
+     <%= f.label :item_id, 'Producto' %><br>
+     <%= f.collection_select :item_id, Item.all, :item_id, :title , { prompt: true }, { class: 'form-control'} %>
+   </div>
+    
+    
+   <div class='field'>
+      <%= f.label :item_qty, 'Cantidad' %><br>
+     <%= f.text_field :item_qty , class: 'form-control'%>
+   </div>
+    
+    
+    
     <%= f.submit %>
   </div>
 <% end %>

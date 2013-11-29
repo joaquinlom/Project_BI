@@ -1,6 +1,6 @@
 Shopping::Application.routes.draw do
   root 'welcome#index'
-  
+  get 'order_detail/:id', to: 'order_details#new'
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'

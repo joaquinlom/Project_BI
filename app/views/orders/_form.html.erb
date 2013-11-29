@@ -12,6 +12,28 @@
   <% end %>
 
   <div class="actions">
+    <div class='field'>
+      <%= f.label :clientes, 'Clientes' %><br>
+      <%= f.collection_select :customer_id, Customer.order('first_name').all, :customer_id, :first_name , { prompt: true }, { class: 'form-control'} %>
+    </div>
+    
+    <div class='field'>
+    <%= f.label :order_id, 'ID' %><br>
+    <%= f.text_field :order_id ,class: 'form-control'%>
+    </div>
+    
+    
+    <div class='field'>
+    <%= f.label :order_date, 'Order Date' %><br>
+    <%= f.text_field :order_date ,class: 'form-control'%>
+    </div>
+    
+    
+    <div class='field'>
+    <%= f.label :shipped_date, 'Shipped Date' %><br>
+    <%= f.text_field :shipped_date ,class: 'form-control'%>
+    </div>
+    
     <%= f.submit %>
   </div>
 <% end %>

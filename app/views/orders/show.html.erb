@@ -7,6 +7,9 @@
           <%= notice %>
           </div>
           <% end %>
+           <button type="button" class="btn btn-default">
+             <span class="glyphicon glyphicon-shopping-cart"></span> <%= link_to 'Nuevo Prodcuto',  new_order_detail_path(:id => @order.order_id) %>
+           </button>
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -20,7 +23,7 @@
                 <tbody>
                   <% total = 0%>
                   <% @order_details.each  do |order_detail| %>
-                  <% total += order_detail.item.unit_price %>
+                  <% total +=order_detail.item.unit_price * order_detail.item_qty %>
                   <tr>
                         <td class="col-sm-8 col-md-6">
                         <div class="media">
@@ -38,7 +41,7 @@
                         <td class="col-sm-1 col-md-1 text-center"><strong><%=order_detail.item.unit_price * order_detail.item_qty %></strong></td>
                         <td class="col-sm-1 col-md-1">
                         <button type="button" class="btn btn-danger" >
-                            <span class="glyphicon glyphicon-remove"></span> <%= link_to 'Remove', order_detail , method: :destroy, data: { confirm: 'Are you sure?' } %>
+                            <span class="glyphicon glyphicon-remove"></span> <%= link_to 'Remove', order_detail_path(order_detail.order_id) , method: :delete, data: { confirm: 'Are you sure?' } %>
                         </button></td>
                     </tr>
                   <% end %>
