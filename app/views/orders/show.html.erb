@@ -23,6 +23,9 @@
                 <tbody>
                   <% total = 0%>
                   <% @order_details.each  do |order_detail| %>
+                  <% if order_detail.item.nil? %>
+                  <tr>No Tiene Productos</tr>
+                  <% else %>
                   <% total +=order_detail.item.unit_price * order_detail.item_qty %>
                   <tr>
                         <td class="col-sm-8 col-md-6">
@@ -44,6 +47,7 @@
                             <span class="glyphicon glyphicon-remove"></span> <%= link_to 'Remove', order_detail_path(order_detail.order_id) , method: :delete, data: { confirm: 'Are you sure?' } %>
                         </button></td>
                     </tr>
+                  <%end%>
                   <% end %>
                     <tr>
                         <td>   </td>
