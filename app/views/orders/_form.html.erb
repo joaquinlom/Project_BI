@@ -25,13 +25,13 @@
     
     <div class='field'>
     <%= f.label :order_date, 'Order Date' %><br>
-    <%= f.text_field :order_date ,class: 'form-control'%>
+      <%= f.text_field :order_date ,class: 'form-control' ,:value => 'DD/MM/YYYY'%>
     </div>
     
     
     <div class='field'>
     <%= f.label :shipped_date, 'Shipped Date' %><br>
-    <%= f.text_field :shipped_date ,class: 'form-control'%>
+    <%= f.text_field :shipped_date ,class: 'form-control' , :value => 'DD/MM/YYYY'%>
     </div>
     
     <%= f.submit %>
