@@ -1,4 +1,30 @@
 <p id="notice"><%= notice %></p>
+<h2><%= @customer.fullname %></h2>
+<p> <%= @customer.phone %></p>
+<p> <%= @customer.address %></p>
+<p> <%= @customer.city %></p>
+
+<p>Ordenes</P>
+<table>
+  <thead>
+    <tr>
+      <th width="20%">ID</th>
+      <th width="20%">Order Date</th>
+      <th width="20%">Shipped Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+   
+<% @customer.orders.each do |o|%>
+    <tr>
+      <td><%= o.order_id %></td>
+      <td><%= o.order_date %></td>
+      <td><%= o.shipped_date %></td>
+    </tr>
+<%end%>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
 <%= link_to 'Back', customers_path %>

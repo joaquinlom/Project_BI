@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20131128204812) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "customers", force: true do |t|
     t.integer  "customer_id"
     t.string   "first_name"
@@ -60,10 +63,6 @@ ActiveRecord::Schema.define(version: 20131128204812) do
     t.string   "password_salt"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "oauth_token"
-    t.datetime "oauth_expires_at"
   end
 
 end
