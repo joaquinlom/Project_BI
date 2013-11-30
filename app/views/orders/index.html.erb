@@ -1,6 +1,9 @@
-<h1>Listing orders</h1>
+<h1>Ordenes</h1>
 
-<%= link_to 'New Order', new_order_path %>
+
+ <button type="button" class="btn btn-default">
+             <span class=".glyphicon .glyphicon-plus"></span> <%= link_to 'New Order', new_order_path %>
+</button>
 <%if @orders.count <= 0%>
 <p class='text-danger'>No hay Ordenes disponibles.</p><br>
 <%else%>

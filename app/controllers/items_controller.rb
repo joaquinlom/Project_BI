@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
-
+  before_action  only: [:show, :edit, :update, :destroy]
+  
   # GET /items
   # GET /items.json
   def index
@@ -10,6 +10,7 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
+    
   end
 
   # GET /items/new
@@ -28,7 +29,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        format.html { redirect_to items_path, notice: 'Producto Creado.' }
         format.json { render action: 'show', status: :created, location: @item }
       else
         format.html { render action: 'new' }
@@ -54,9 +55,10 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
+    @item = Item.find_by_item_id(params[:id])
     @item.destroy
     respond_to do |format|
-      format.html { redirect_to items_url }
+      format.html { redirect_to items_url ,notice: "Producto Eliminado" }
       format.json { head :no_content }
     end
   end

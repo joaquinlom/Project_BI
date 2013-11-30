@@ -1,4 +1,13 @@
-<h1>Listing items</h1>
+<% if flash[:notice] %>
+	<div class="alert alert-dismissable alert-success">
+		<%= notice %>
+	</div>
+<% end %>
+
+<h1>Productos</h1>
+ <button type="button" class="btn btn-default">
+             <span class=".glyphicon .glyphicon-plus"></span> <%= link_to 'New Item', new_item_path %>
+</button>
 <% if @items.count <= 0%>
 <p class='text-danger'>No hay Items disponibles.</p><br>
 <%else%>
@@ -17,8 +26,8 @@
         <td><%= item.item_id %></td>
         <td><%= item.title %></td>
         <td><%= item.artist %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_item_path(item.item_id) %></td>
+        <td><%= link_to 'Destroy', item_path(item.item_id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +35,4 @@
 <%end%>
 <br>
 
-<%= link_to 'New Item', new_item_path %>
+

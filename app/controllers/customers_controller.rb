@@ -33,7 +33,7 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
+        format.html { redirect_to customers_path, notice: 'Cliente agregado.' }
         format.json { render action: 'show', status: :created, location: @customer }
       else
         format.html { render action: 'new' }
@@ -47,7 +47,7 @@ class CustomersController < ApplicationController
   def update
     respond_to do |format|
       if @customer.update(customer_params)
-        format.html { redirect_to @customer, notice: 'Customer was successfully updated.' }
+        format.html { redirect_to customers_path, notice: 'Customer was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -59,9 +59,10 @@ class CustomersController < ApplicationController
   # DELETE /customers/1
   # DELETE /customers/1.json
   def destroy
+    @customer = Customer.find_by_customer_id(params[:id])
     @customer.destroy
     respond_to do |format|
-      format.html { redirect_to customers_url }
+      format.html { redirect_to customers_url , notice: "Cliente Eliminado" }
       format.json { head :no_content }
     end
   end
@@ -74,6 +75,7 @@ class CustomersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params[:customer]
+      #params[:customer]
+      params.require(:customer).permit(:customer_id, :first_name, :last_name, :address, :city, :state, :zip, :phone, :fax)
     end
 end
